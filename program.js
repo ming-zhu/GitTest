@@ -1,7 +1,7 @@
 var duplexer = require( 'duplexer' );
 var through = require( 'through' );
 
-module.exports = function( counter ) {
+function Test( counter ) {
 	var counts = {};
 	return duplexer( through( function( row ) {
 		counts[row.country] = ( counts[row.country] || 0 ) + 1;
@@ -9,3 +9,5 @@ module.exports = function( counter ) {
 		counter.setCounts( counts );
 	} ), counter );
 }
+
+module.exports = Test;
